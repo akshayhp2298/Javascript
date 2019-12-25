@@ -1,12 +1,14 @@
 function replaceProperty(obj, renameKey) {
-  let str = JSON.stringify(obj)
+  let tmp = {}
   let property = Object.keys(renameKey)
   property.forEach(element => {
-    str = str.replace(element, renameKey[element])
+    if (obj[element]) {
+      tmp[renameKey[element]] = obj[element]
+      delete obj[element]
+    }
   })
-  obj = JSON.parse(str)
-  return obj
+  return { ...tmp, ...obj }
 }
 let obj = { name: "JJ", job: "programmer", age: 22 }
-let renameKey = { name: "firstName", job: "Role" }
+let renameKey = { name: "firstName", job: "Role", firstName: "asdss" }
 console.log(replaceProperty(obj, renameKey))
