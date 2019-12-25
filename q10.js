@@ -1,7 +1,9 @@
-function convertTo24Hours(num) {
-  if (num > 24) return "invalid"
-  if (num == 12) return "12PM"
-  if (num == 0) return "12AM"
-  return `${num % 12}${num > 12 ? "PM" : "AM"}`
+const convertTo24Hours = num => {
+  if(num >= 24) return "Invalid"
+  let H = num
+  let h = H % 12 || 12
+  let ampm = H < 12 ? " AM" : " PM"
+  ts = h + ampm
+  return ts
 }
-console.log(convertTo24Hours(5))
+console.log(convertTo24Hours(24))
