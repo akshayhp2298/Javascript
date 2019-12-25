@@ -1,12 +1,11 @@
 function filterUnique(arr) {
-    let result = []
-    let map = new   Map()
-    arr.forEach(element => {
-        map.set(element,(map.get(element) || 0) + 1)
-    });
-    map.forEach((val,key)=>{
-        if(val === 1) result.push(key)
-    })
-    return result
+  let result = []
+  arr = arr.sort()
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i - 1] != arr[i] && arr[i] != arr[i + 1]) {
+      result.push(arr[i])
+    }
+  }
+  return result
 }
-console.log(filterUnique([1,1,2,2,3,3,4,5]))
+console.log(filterUnique([1, 1, 2, 2, 3, 3, 4, 5]))
